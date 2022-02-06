@@ -21,6 +21,7 @@ repositories {
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa:2.6.3'
 	implementation 'org.springframework.boot:spring-boot-starter-web:2.6.3'
+	implementation 'org.springdoc:springdoc-openapi-ui:1.6.5'
 	compileOnly 'org.projectlombok:lombok:1.18.22'
 	runtimeOnly 'com.h2database:h2:2.1.210'
 	annotationProcessor 'org.projectlombok:lombok:1.18.22'
@@ -31,3 +32,24 @@ tasks.named('test') {
 	useJUnitPlatform()
 }
 targetCompatibility = JavaVersion.VERSION_16
+
+task generateData() {
+	doLast {
+		File dataSQL = file("C:\\Users\\Mateusz\\Desktop\\JAVAProjects\\restapi\\src\\main\\resources\\data.sql")
+		dataSQL.write("");
+
+		for (int i = 1; i <= 100; i++) {
+			dataSQL.append("INSERT INTO CUSTOMERS(id, first_name, last_name, email, username) " +
+					"VALUES (${i}, 'Name ${i}', 'Surname ${i}', 'Email ${i}', 'Username ${i}');\n");
+		}
+		for(int i = 1, j=100; i<=100; i++, j--) {
+			dataSQL.append("INSERT INTO ORDERS(id, customers_id, status, payment_type, total_price) " +
+					"VALUES (${i}, ${j}, 'Status ${i}', 'Payment Type ${i}', '${i}.${i}');\n");
+		}
+		for(int i = 1; i<100;i++) {
+			int j = (int) (1 + i / 10);
+			dataSQL.append("INSERT INTO PRODUCTS(id, name, price, orders_id) " +
+					"VALUES (${i}, 'Name ${i}', '${i}.${i}', ${j});\n");
+		}
+	}
+}

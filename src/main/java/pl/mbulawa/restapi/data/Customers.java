@@ -9,7 +9,7 @@ import javax.persistence.Id;
 @Entity
 @RequiredArgsConstructor
 @Data
-public class Customer {
+public class Customers {
     @Id
     private long id;
     private String first_name;

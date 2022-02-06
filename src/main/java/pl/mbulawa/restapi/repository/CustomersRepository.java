@@ -2,8 +2,8 @@ package pl.mbulawa.restapi.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-import pl.mbulawa.restapi.data.Customer;
+import pl.mbulawa.restapi.data.Customers;
 
 @Repository
-public interface CustomerRepository extends JpaRepository<Customer, Long>{
+public interface CustomersRepository extends JpaRepository<Customers, Long>{
 }

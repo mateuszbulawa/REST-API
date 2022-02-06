@@ -2,18 +2,23 @@ package pl.mbulawa.restapi.service;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import pl.mbulawa.restapi.data.Customer;
-import pl.mbulawa.restapi.repository.CustomerRepository;
+import pl.mbulawa.restapi.data.Customers;
+import pl.mbulawa.restapi.repository.CustomersRepository;
 
 import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-public class CustomerService {
+public class CustomersService {
 
-    private final CustomerRepository customerRepository;
+    private final CustomersRepository customerRepository;
 
-    public List<Customer> getCustomers() {
+    public List<Customers> getCustomers() {
         return customerRepository.findAll();
+    }
+
+    public Customers getSingleCustomer(long customerId) {
+        return customerRepository.findById(customerId)
+                .orElseThrow();
     }
 }

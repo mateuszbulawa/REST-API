@@ -1,7 +1,12 @@
-package pl.mbulawa.restapi;
+package pl.mbulawa.restapi.service;
 
-public class Algorithm {
-    public static int getFib(int number) {
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Service;
+
+@Service
+@Scope("singleton")
+public class AlgorithmService {
+    public int getFib(int number) {
         switch (number) {
             case 0 -> {
                 return 0;
@@ -14,8 +19,7 @@ public class Algorithm {
             }
         }
     }
-
-    public static int getFactorial(Integer factorialNumber) {
+    public int getFactorial(Integer factorialNumber) {
         switch (factorialNumber) {
             case 0 -> {
                 return 0;
@@ -28,8 +32,7 @@ public class Algorithm {
             }
         }
     }
-
-    public static boolean isPrimeNumber(Integer primeNumber) {
+    public boolean isPrimeNumber(Integer primeNumber) {
         if (primeNumber < 2) return false;
 
         for (int i = 2; i * i < primeNumber; i++)
