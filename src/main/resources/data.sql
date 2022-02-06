@@ -1,1 +1,0 @@
-INSERT INTO PERSON (id, name, surname, age, city, country) VALUES (1, 'Kamil', 'Cichocki', 20, 'Warszawa', 'Polska');
